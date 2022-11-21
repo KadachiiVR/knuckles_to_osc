@@ -123,14 +123,18 @@ def handle_input():
             if args.debug:
                 print(f"{name}: state = {value.bState}, changed = {value.bChanged}")
         elif action.dtype == DTYPES.SKELETON:
-            value = openvr.VRInput().getSkeletalSummaryData(action.handle, openvr.VRSummaryType_FromDevice)
-            for fname, fidx in FINGERS.items():
-                osc.send_message(f"{CONFIG.osc_prefix}{action.param}/Curl/{fname}", osc_compress_float(value.flFingerCurl[fidx]))
-            for fname, fidx in SPLAYFINGERS.items():
-                osc.send_message(f"{CONFIG.osc_prefix}{action.param}/Splay/{fname}", osc_compress_float(value.flFingerSplay[fidx]))
+            try:
+                value = openvr.VRInput().getSkeletalSummaryData(action.handle, openvr.VRSummaryType_FromDevice)
+                for fname, fidx in FINGERS.items():
+                    osc.send_message(f"{CONFIG.osc_prefix}{action.param}/Curl/{fname}", osc_compress_float(value.flFingerCurl[fidx]))
+                for fname, fidx in SPLAYFINGERS.items():
+                    osc.send_message(f"{CONFIG.osc_prefix}{action.param}/Splay/{fname}", osc_compress_float(value.flFingerSplay[fidx]))
 
-            if args.debug:
-                print(f"{name}: {format_skeletal_summary(value)}")
+                if args.debug:
+                    print(f"{name}: {format_skeletal_summary(value)}")
+            except openvr.OpenVRError:
+                if args.debug:
+                    print(f"{name}: Error fetching data (you probably have the SteamVR overlay up")
         else:
             value = openvr.VRInput().getAnalogActionData(action.handle, openvr.k_ulInvalidInputValueHandle)
             if action.dtype == DTYPES.VECTOR1:
