@@ -1,0 +1,73 @@
+{
+    "default_bindings": [
+        {
+            "controller_type": "knuckles",
+            "binding_url":"bindings_knuckles.json"
+        }
+    ],
+    "actions": [
+        {
+            "name": "/actions/main/in/TouchPosLeft",
+            "requirement": "optional",
+            "type": "vector2"
+        },
+        {
+            "name": "/actions/main/in/TouchTapLeft",
+            "requirement": "optional",
+            "type": "boolean"
+        },
+        {
+            "name": "/actions/main/in/TouchPressLeft",
+            "requirement": "optional",
+            "type": "boolean"
+        },
+        {
+            "name": "/actions/main/in/TouchPosRight",
+            "requirement": "optional",
+            "type": "vector2"
+        },
+        {
+            "name": "/actions/main/in/TouchTapRight",
+            "requirement": "optional",
+            "type": "boolean"
+        },
+        {
+            "name": "/actions/main/in/TouchPressRight",
+            "requirement": "optional",
+            "type": "boolean"
+        },
+        {
+            "name": "/actions/main/in/RightHandSkeleton",
+            "type": "skeleton",
+            "skeleton": "/skeleton/hand/right"
+        },
+        {
+            "name": "/actions/main/in/LeftHandSkeleton",
+            "type": "skeleton",
+            "skeleton": "/skeleton/hand/left"
+        }
+    ],
+    "action_sets":
+    [
+        {
+            "name": "/actions/main",
+            "usage": "leftright"
+        }
+    ],
+    "localization": [
+        {
+            "language_tag": "en_us",
+
+            "/actions/main": "Actions",
+
+            "/actions/main/in/TouchPosLeft": "Touch Position Left",
+            "/actions/main/in/TouchTapLeft": "Touch Contact Left",
+            "/actions/main/in/TouchPressLeft": "Touch Press Left",
+            "/actions/main/in/TouchPosRight": "Touch Position Right",
+            "/actions/main/in/TouchTapRight": "Touch Contact Right",
+            "/actions/main/in/TouchPressRight": "Touch Press Right",
+            "/actiona/main/in/LeftHandSkeletion": "Left Hand Skeleton",
+            "/actiona/main/in/RightHandSkeletion": "Right Hand Skeleton"
+        }
+    ]
+}

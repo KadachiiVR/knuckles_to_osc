@@ -1,0 +1,18 @@
+{
+    "bindings_folder": "bindings",
+    "app_manifest_file": "app.vrmanifest",
+    "action_manifest_file": "actions.json",
+    "action_set_handle": "/actions/main",
+
+    "actions":
+    {
+        "TouchPosLeft": ["/actions/main/in/TouchPosLeft", "vector2"],
+        "TouchTapLeft": ["/actions/main/in/TouchTapLeft", "bool"],
+        "TouchPressLeft": ["/actions/main/in/TouchPressLeft", "bool"],
+        "TouchPosRight": ["/actions/main/in/TouchPosRight", "vector2"],
+        "TouchTapRight": ["/actions/main/in/TouchTapRight", "bool"],
+        "TouchPressRight":  ["/actions/main/in/TouchPressRight", "bool"],
+        "LeftHandSkeleton": ["/actions/main/in/LeftHandSkeleton", "skeleton"],
+        "RightHandSkeleton": ["/actions/main/in/RightHandSkeleton", "skeleton"]
+    }
+}

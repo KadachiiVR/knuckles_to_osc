@@ -1,0 +1,58 @@
+{
+    "action_manifest_version": 0,
+    "alias_info": {},
+    "app_key" : "kadachii.knuckles_to_osc",
+
+    "bindings": {
+        "/actions/main": {
+            "skeleton": [
+                {
+                    "output": "/actions/main/in/LeftHandSkeleton",
+                    "path": "/user/hand/left/input/skeleton/left"
+                },
+                {
+                    "output": "/actions/main/in/RightHandSkeleton",
+                    "path": "/user/hand/right/input/skeleton/right"
+                }
+            ],
+            "sources": [
+                {
+                    "inputs": {
+                        "position": {
+                            "output": "/actions/main/in/TouchPosLeft"
+                        },
+                        "touch": {
+                            "output": "/actions/main/in/TouchTapLeft"
+                        },
+                        "click": {
+                            "output": "/actions/main/in/TouchPressLeft"
+                        }
+                    },
+                    "mode": "trackpad",
+                    "path": "/user/hand/left/input/trackpad"
+                },
+                {
+                    "inputs": {
+                        "position": {
+                            "output": "/actions/main/in/TouchPosRight"
+                        },
+                        "touch": {
+                            "output": "/actions/main/in/TouchTapRight"
+                        },
+                        "click": {
+                            "output": "/actions/main/in/TouchPressRight"
+                        }
+                    },
+                    "mode": "trackpad",
+                    "path": "/user/hand/right/input/trackpad"
+                }
+            ]
+        }
+    },
+    "category" : "steamvr_input",
+    "controller_type" : "knuckles",
+    "description" : "",
+    "name" : "Default Index Controller Binding",
+    "options" : {},
+    "simulated_actions" : []
+}

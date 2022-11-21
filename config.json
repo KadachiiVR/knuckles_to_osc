@@ -1,0 +1,50 @@
+{
+    "ip": "127.0.0.1",
+    "port": 9000,
+    "osc_prefix": "/avatar/parameters/",
+    "hz": 10.0,
+
+    "outputs":
+    [
+        {
+            "name": "TouchPosLeft",
+            "param": "TPad/L/Pos",
+            "send": true
+        },
+        {
+            "name": "TouchTapLeft",
+            "param": "TPad/L/Tap",
+            "send": true
+        },
+        {
+            "name": "TouchPressLeft",
+            "param": "TPad/L/Press",
+            "send": true
+        },
+        {
+            "name": "TouchPosRight",
+            "param": "TPad/R/Pos",
+            "send": true
+        },
+        {
+            "name": "TouchTapRight",
+            "param": "TPad/R/Tap",
+            "send": true
+        },
+        {
+            "name": "TouchPressRight",
+            "param": "TPad/R/Press",
+            "send": true
+        },
+        {
+            "name": "LeftHandSkeleton",
+            "param": "Skel/L",
+            "send": true
+        },
+        {
+            "name": "RightHandSkeleton",
+            "param": "Skel/R",
+            "send": true
+        }
+    ]
+}

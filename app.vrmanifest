@@ -1,0 +1,17 @@
+{
+	"source" : "builtin",
+	"applications": [{
+		"app_key": "kadachii.knuckles_to_osc",
+		"launch_type": "binary",
+		"binary_path_windows": "./Knuckles_to_OSC.exe",
+		"is_dashboard_overlay": false,
+		"action_manifest_path": "./bindings/actions.json",
+
+		"strings": {
+			"en_us": {
+				"name": "Knuckles to OSC",
+				"description": "Relays your raw knuckles controller inputs through OSC"
+			}
+		}
+	}]
+}
