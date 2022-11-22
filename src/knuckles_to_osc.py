@@ -27,6 +27,8 @@ DTYPES = SimpleNamespace(
     SKELETON = "skeleton"
 )
 ControlAction = collections.namedtuple("ControlAction", ["dtype", "handle", "param"])
+GestureEmuAction = collections.namedtuple("GestureEmuAction", ["handles", "param"])
+GestureEmuActionHandle = collections.namedtuple("GestureEmuActionHandle", ["name", "handle", "code"])
 
 # Set window name on Windows
 if os.name == 'nt':
@@ -47,6 +49,15 @@ def resource_path(relative_path):
         base_path = os.path.abspath(".")
 
     return os.path.join(base_path, relative_path)
+
+
+# https://stackoverflow.com/questions/279561/what-is-the-python-equivalent-of-static-variables-inside-a-function
+def static_vars(**kwargs):
+    def decorate(func):
+        for k in kwargs:
+            setattr(func, k, kwargs[k])
+        return func
+    return decorate
 
 
 def move(y, x):
@@ -94,6 +105,7 @@ appmanifest_path = os.path.join(resource_path(OVRCONFIG.app_manifest_file))
 openvr.VRApplications().addApplicationManifest(appmanifest_path)
 openvr.VRInput().setActionManifestPath(action_path)
 action_set_handle = openvr.VRInput().getActionSetHandle(OVRCONFIG.action_set_handle)
+gesture_emu_action_set_handle = openvr.VRInput().getActionSetHandle(OVRCONFIG.gesture_emu_action_set_handle)
 
 actions = {}
 for item in CONFIG.outputs:
@@ -106,14 +118,30 @@ for item in CONFIG.outputs:
     a["param"] = item.param
     actions[item.name] = ControlAction(**a)
 
+gesture_emu_actions = {}
+for item in CONFIG.gesture_emu_outputs:
+    handle_lookup = getattr(OVRCONFIG.gesture_emu_actions, item.hand).__dict__
+    handles = [
+        GestureEmuActionHandle(
+            name = g.name,
+            handle = openvr.VRInput().getActionHandle(handle_lookup[g.name]),
+            code = g.code
+        )
+        for g in item.gestures
+    ]
+    gesture_emu_actions[item.hand] = GestureEmuAction(handles=handles, param=item.param)
+
+@static_vars(last_gesture_emu_output={"left": 0, "right": 0})
 def handle_input():
-    actionsets = (openvr.VRActiveActionSet_t * 1)()
+    actionsets = (openvr.VRActiveActionSet_t * 2)()
     actionsets[0].ulActionSet = action_set_handle
+    actionsets[1].ulActionSet = gesture_emu_action_set_handle
     openvr.VRInput().updateActionState(actionsets)
 
     if args.debug:
-        move(7 + len(actions), 0)
+        move(9 + len(actions), 0)
     
+    # fetch and transmit raw controller data
     for name, action in actions.items():
         if action.dtype == DTYPES.BOOL:
             value = openvr.VRInput().getDigitalActionData(action.handle, openvr.k_ulInvalidInputValueHandle)
@@ -150,6 +178,23 @@ def handle_input():
                     print(f"{name}: x = {value.x: #.4f}, y = {value.y: #.4f}")
     
     if args.debug:
+        print("Hand Gesture Emulation:")
+    for hand, g_action in gesture_emu_actions.items():
+        code = 0
+        for action in g_action.handles:
+            value = openvr.VRInput().getDigitalActionData(action.handle, openvr.k_ulInvalidInputValueHandle)
+            print(f"{action.name}: {value.bState}")
+            if bool(value.bState) and action.code > code:
+                code = action.code
+
+        if args.debug:
+            print(f"{hand}: {code}")
+        if code != handle_input.last_gesture_emu_output[hand]:
+            osc.send_message(f"{CONFIG.osc_prefix}{g_action.param}", code)
+            handle_input.last_gesture_emu_output[hand] = code
+
+    
+    if args.debug:
         sys.stdout.flush()
 
 
@@ -160,6 +205,7 @@ print(f"Port:\t\t{PORT}")
 print(f"Frequency:\t{HZ} hZ")
 print("Outputs:")
 print("\n".join([f"\t{k} -> {CONFIG.osc_prefix}{v.param}" for k, v in actions.items()]))
+print("\n".join([f"{hand} Emulated Gestures -> {CONFIG.osc_prefix}{a.param}" for hand, a in gesture_emu_actions.items()]))
 sys.stdout.flush()
 
 

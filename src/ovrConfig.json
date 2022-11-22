@@ -14,5 +14,31 @@
         "TouchPressRight":  ["/actions/main/in/TouchPressRight", "bool"],
         "LeftHandSkeleton": ["/actions/main/in/LeftHandSkeleton", "skeleton"],
         "RightHandSkeleton": ["/actions/main/in/RightHandSkeleton", "skeleton"]
+    },
+
+    "gesture_emu_action_set_handle": "actions/gesture_emu",
+    "gesture_emu_actions":
+    {
+        "left":
+        {
+            "FistLeft": "/actions/main/in/FistLeft",
+            "HandOpenLeft": "/actions/main/in/HandOpenLeft",
+            "FingerPointLeft": "/actions/main/in/FingerPointLeft",
+            "VictoryLeft": "/actions/main/in/VictoryLeft",
+            "RockNRollLeft": "/actions/main/in/RockNRollLeft",
+            "HandGunLeft": "/actions/main/in/HandGunLeft",
+            "ThumbsUpLeft": "/actions/main/in/ThumbsUpLeft"
+        },
+        "right":
+        {
+            "FistRight": "/actions/main/in/FistRight",
+            "HandOpenRight": "/actions/main/in/HandOpenRight",
+            "FingerPointRight": "/actions/main/in/FingerPointRight",
+            "VictoryRight": "/actions/main/in/VictoryRight",
+            "RockNRollRight": "/actions/main/in/RockNRollRight",
+            "HandGunRight": "/actions/main/in/HandGunRight",
+            "ThumbsUpRight": "/actions/main/in/ThumbsUpRight"
+        }
     }
+
 }

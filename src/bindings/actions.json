@@ -45,6 +45,76 @@
             "name": "/actions/main/in/LeftHandSkeleton",
             "type": "skeleton",
             "skeleton": "/skeleton/hand/left"
+        },
+        {
+            "name": "/actions/main/in/FistLeft",
+            "requirement": "optional",
+            "type": "boolean"
+        },
+        {
+            "name": "/actions/main/in/HandOpenLeft",
+            "requirement": "optional",
+            "type": "boolean"
+        },
+        {
+            "name": "/actions/main/in/FingerPointLeft",
+            "requirement": "optional",
+            "type": "boolean"
+        },
+        {
+            "name": "/actions/main/in/VictoryLeft",
+            "requirement": "optional",
+            "type": "boolean"
+        },
+        {
+            "name": "/actions/main/in/RockNRollLeft",
+            "requirement": "optional",
+            "type": "boolean"
+        },
+        {
+            "name": "/actions/main/in/HandGunLeft",
+            "requirement": "optional",
+            "type": "boolean"
+        },
+        {
+            "name": "/actions/main/in/ThumbsUpLeft",
+            "requirement": "optional",
+            "type": "boolean"
+        },
+        {
+            "name": "/actions/main/in/FistRight",
+            "requirement": "optional",
+            "type": "boolean"
+        },
+        {
+            "name": "/actions/main/in/HandOpenRight",
+            "requirement": "optional",
+            "type": "boolean"
+        },
+        {
+            "name": "/actions/main/in/FingerPointRight",
+            "requirement": "optional",
+            "type": "boolean"
+        },
+        {
+            "name": "/actions/main/in/VictoryRight",
+            "requirement": "optional",
+            "type": "boolean"
+        },
+        {
+            "name": "/actions/main/in/RockNRollRight",
+            "requirement": "optional",
+            "type": "boolean"
+        },
+        {
+            "name": "/actions/main/in/HandGunRight",
+            "requirement": "optional",
+            "type": "boolean"
+        },
+        {
+            "name": "/actions/main/in/ThumbsUpRight",
+            "requirement": "optional",
+            "type": "boolean"
         }
     ],
     "action_sets":
@@ -59,6 +129,7 @@
             "language_tag": "en_us",
 
             "/actions/main": "Actions",
+            "/actions/gesture_emu": "Gesture Emulation",
 
             "/actions/main/in/TouchPosLeft": "Touch Position Left",
             "/actions/main/in/TouchTapLeft": "Touch Contact Left",
@@ -66,8 +137,23 @@
             "/actions/main/in/TouchPosRight": "Touch Position Right",
             "/actions/main/in/TouchTapRight": "Touch Contact Right",
             "/actions/main/in/TouchPressRight": "Touch Press Right",
-            "/actiona/main/in/LeftHandSkeletion": "Left Hand Skeleton",
-            "/actiona/main/in/RightHandSkeletion": "Right Hand Skeleton"
+            "/actions/main/in/LeftHandSkeletion": "Left Hand Skeleton",
+            "/actions/main/in/RightHandSkeletion": "Right Hand Skeleton",
+
+            "/actions/main/in/FistLeft": "Fist Left",
+            "/actions/main/in/HandOpenLeft": "Hand Open Left",
+            "/actions/main/in/FingerPointLeft": "Finger Point Left",
+            "/actions/main/in/VictoryLeft": "Victory Left",
+            "/actions/main/in/RockNRollLeft": "RockNRoll Left",
+            "/actions/main/in/HandGunLeft": "Hand Gun Left",
+            "/actions/main/in/ThumbsUpLeft": "Thumbs Up Left",
+            "/actions/main/in/FistRight": "Fist Right",
+            "/actions/main/in/HandOpenRight": "Hand Open Right",
+            "/actions/main/in/FingerPointRight": "Finger Point Right",
+            "/actions/main/in/VictoryRight": "Victory Right",
+            "/actions/main/in/RockNRollRight": "RockNRoll Right",
+            "/actions/main/in/HandGunRight": "Hand Gun Right",
+            "/actions/main/in/ThumbsUpRight": "Thumbs Up Right"
         }
     ]
 }

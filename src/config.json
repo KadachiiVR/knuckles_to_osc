@@ -46,5 +46,79 @@
             "param": "Skel/R",
             "send": true
         }
+    ],
+    "gesture_emu_outputs":
+    [
+        {
+            "hand": "left",
+            "param": "GestureLeftEmu",
+            "gestures":
+            [
+                {
+                    "name": "FistLeft",
+                    "code": 1
+                },
+                {
+                    "name": "HandOpenLeft",
+                    "code": 2
+                },
+                {
+                    "name": "FingerPointLeft",
+                    "code": 3
+                },
+                {
+                    "name": "VictoryLeft",
+                    "code": 4
+                },
+                {
+                    "name": "RockNRollLeft",
+                    "code": 5
+                },
+                {
+                    "name": "HandGunLeft",
+                    "code": 6
+                },
+                {
+                    "name": "ThumbsUpLeft",
+                    "code": 7
+                }
+            ],
+            "send": true
+        },
+        {
+            "hand": "right",
+            "param": "GestureRightEmu",
+            "gestures":[
+                {
+                    "name": "FistRight",
+                    "code": 1
+                },
+                {
+                    "name": "HandOpenRight",
+                    "code": 2
+                },
+                {
+                    "name": "FingerPointRight",
+                    "code": 3
+                },
+                {
+                    "name": "VictoryRight",
+                    "code": 4
+                },
+                {
+                    "name": "RockNRollRight",
+                    "code": 5
+                },
+                {
+                    "name": "HandGunRight",
+                    "code": 6
+                },
+                {
+                    "name": "ThumbsUpRight",
+                    "code": 7
+                }
+            ],
+            "send": true
+        }
     ]
 }
