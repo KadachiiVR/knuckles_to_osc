@@ -4,7 +4,7 @@ A simple program that sends raw Knuckles controller inputs (trackpad, finger pos
 (This is just a cursory readme to get started, more detail to come)
 
 ## Instructions
-- Download the .zip from [the latest release](https://github.com/KadachiiVR/knuckles_to_osc/releases/tag/v0.1)
+- Download the .zip from [the latest release](https://github.com/KadachiiVR/knuckles_to_osc/releases/latest)
 - Unzip it
 - Start SteamVR
 - Run `Knuckles_to_OSC.exe` in the unzipped folder
