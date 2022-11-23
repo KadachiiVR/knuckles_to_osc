@@ -51,7 +51,7 @@
     [
         {
             "hand": "left",
-            "param": "GestureLeftEmu",
+            "param": "GestureLeft_Emu",
             "gestures":
             [
                 {
@@ -87,7 +87,7 @@
         },
         {
             "hand": "right",
-            "param": "GestureRightEmu",
+            "param": "GestureRight_Emu",
             "gestures":[
                 {
                     "name": "FistRight",
