@@ -49,16 +49,16 @@
                 {
                     "inputs": {
                         "east": {
-                            "output": "/actions/main/in/FistLeft"
+                            "output": "/actions/main/in/VictoryLeft"
                         },
                         "north": {
-                            "output": "/actions/main/in/HandOpenLeft"
+                            "output": "/actions/main/in/ThumbsUpLeft"
                         },
                         "west": {
-                            "output": "/actions/main/in/FingerPointLeft"
+                            "output": "/actions/main/in/HandGunLeft"
                         },
                         "south": {
-                            "output": "/actions/main/in/VictoryLeft"
+                            "output": "/actions/main/in/HandOpenLeft"
                         }
                     },
                     "mode": "dpad",
@@ -73,10 +73,10 @@
                             "output": "/actions/main/in/RockNRollLeft"
                         },
                         "north": {
-                            "output": "/actions/main/in/HandGunLeft"
+                            "output": "/actions/main/in/FistLeft"
                         },
                         "west": {
-                            "output": "/actions/main/in/ThumbsUpLeft"
+                            "output": "/actions/main/in/FingerPointLeft"
                         }
                     },
                     "mode": "dpad",
@@ -88,16 +88,16 @@
                 {
                     "inputs": {
                         "east": {
-                            "output": "/actions/main/in/FistRight"
+                            "output": "/actions/main/in/VictoryRight"
                         },
                         "north": {
-                            "output": "/actions/main/in/HandOpenRight"
+                            "output": "/actions/main/in/ThumbsUpRight"
                         },
                         "west": {
-                            "output": "/actions/main/in/FingerPointRight"
+                            "output": "/actions/main/in/HandGunRight"
                         },
                         "south": {
-                            "output": "/actions/main/in/VictoryRight"
+                            "output": "/actions/main/in/HandOpenRight"
                         }
                     },
                     "mode": "dpad",
@@ -112,10 +112,10 @@
                             "output": "/actions/main/in/RockNRollRight"
                         },
                         "north": {
-                            "output": "/actions/main/in/HandGunRight"
+                            "output": "/actions/main/in/FistRight"
                         },
                         "west": {
-                            "output": "/actions/main/in/ThumbsUpRight"
+                            "output": "/actions/main/in/FingerPointRight"
                         }
                     },
                     "mode": "dpad",
