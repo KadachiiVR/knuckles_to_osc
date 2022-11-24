@@ -106,6 +106,8 @@ openvr.VRApplications().addApplicationManifest(appmanifest_path)
 openvr.VRInput().setActionManifestPath(action_path)
 action_set_handle = openvr.VRInput().getActionSetHandle(OVRCONFIG.action_set_handle)
 gesture_emu_action_set_handle = openvr.VRInput().getActionSetHandle(OVRCONFIG.gesture_emu_action_set_handle)
+TAP_CODES = set([0, 2, 4, 6, 7])
+PRESS_CODES = set([1, 3, 5]) # TODO: derive these from bindings.json
 
 actions = {}
 for item in CONFIG.outputs:
@@ -166,13 +168,13 @@ def handle_input():
         else:
             value = openvr.VRInput().getAnalogActionData(action.handle, openvr.k_ulInvalidInputValueHandle)
             if action.dtype == DTYPES.VECTOR1:
-                osc.send_message(f"{CONFIG.osc_prefix}{action.param}", float(value.x))
+                osc.send_message(f"{CONFIG.osc_prefix}{action.param}", float(value.x) / 2 + .5)
 
                 if args.debug:
                     print(f"{name}: x = {value.x: #.4f}")
             elif action.dtype == DTYPES.VECTOR2:
-                osc.send_message(f"{CONFIG.osc_prefix}{action.param}/X", osc_compress_float(value.x))
-                osc.send_message(f"{CONFIG.osc_prefix}{action.param}/Y", osc_compress_float(value.y))
+                osc.send_message(f"{CONFIG.osc_prefix}{action.param}/X", osc_compress_float(value.x) / 2 + .5)
+                osc.send_message(f"{CONFIG.osc_prefix}{action.param}/Y", osc_compress_float(value.y) / 2 + .5)
                 
                 if args.debug:
                     print(f"{name}: x = {value.x: #.4f}, y = {value.y: #.4f}")
@@ -183,9 +185,10 @@ def handle_input():
         code = 0
         for action in g_action.handles:
             value = openvr.VRInput().getDigitalActionData(action.handle, openvr.k_ulInvalidInputValueHandle)
-            print(f"{action.name}: {value.bState}")
-            if bool(value.bState) and action.code > code:
-                code = action.code
+            if args.debug:
+                print(f"{action.name}: {value.bState}")
+            if bool(value.bState) and action.code > code and (action.code in PRESS_CODES or code in TAP_CODES):
+                code = int(action.code)
 
         if args.debug:
             print(f"{hand}: {code}")
