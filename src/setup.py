@@ -6,7 +6,7 @@ from cx_Freeze import setup, Executable
 packages = ["os", "json", "traceback", "openvr", "sys", "time", "ctypes", "argparse", "pythonosc", "collections", "setuptools", "packaging", "pkg_resources"]
 exclude = ["tkinter", "asyncio", "concurrent", "lib2to3"]
 include = ["packaging.version", "pyparsing"]
-file_include = ["config.json", "ovrConfig.json", "openvr/", "bindings/", "app.vrmanifest", "debug_mode.bat"]
+file_include = ["config.json", "ovrConfig.json", "custom_gestures.json", "openvr/", "bindings/", "app.vrmanifest", "debug_mode.bat"]
 bin_excludes = ["_bz2.pyd", "_decimal.pyd", "_hashlib.pyd", "_lzma.pyd", "_queue.pyd", "_ssl.pyd", "libcrypto-1_1.dll", "libssl-1_1.dll", "ucrtbase.dll", "VCRUNTIME140.dll"]
 
 build_exe_options = {"packages": packages, "includes": include, "excludes": exclude, "include_files": file_include, "bin_excludes": bin_excludes}
