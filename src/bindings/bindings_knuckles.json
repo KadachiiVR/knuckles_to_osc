@@ -123,6 +123,24 @@
                         "sub_mode": "click"
                     },
                     "path": "/user/hand/right/input/trackpad"
+                },
+                {
+                    "inputs": {
+                        "pull": {
+                            "output": "/actions/main/in/TriggerLeft"
+                        }
+                    },
+                    "mode": "trigger",
+                    "path": "/user/hand/left/input/trigger"
+                },
+                {
+                    "inputs": {
+                        "pull": {
+                            "output": "/actions/main/in/TriggerRight"
+                        }
+                    },
+                    "mode": "trigger",
+                    "path": "/user/hand/right/input/trigger"
                 }
             ]
         }

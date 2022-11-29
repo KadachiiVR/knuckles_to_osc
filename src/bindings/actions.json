@@ -115,6 +115,16 @@
             "name": "/actions/main/in/ThumbsUpRight",
             "requirement": "optional",
             "type": "boolean"
+        },
+        {
+            "name": "/actions/main/in/TriggerLeft",
+            "requirement": "optional",
+            "type": "vector1"
+        },
+        {
+            "name": "/actions/main/in/TriggerRight",
+            "requirement": "optional",
+            "type": "vector1"
         }
     ],
     "action_sets":
@@ -139,6 +149,8 @@
             "/actions/main/in/TouchPressRight": "Touch Press Right",
             "/actions/main/in/LeftHandSkeletion": "Left Hand Skeleton",
             "/actions/main/in/RightHandSkeletion": "Right Hand Skeleton",
+            "/actions/main/in/TriggerLeft": "Left Hand Trigger",
+            "/actions/main/in/TriggerRight": "Right Hand Trigger",
 
             "/actions/main/in/FistLeft": "Fist Left",
             "/actions/main/in/HandOpenLeft": "Hand Open Left",

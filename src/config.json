@@ -37,6 +37,16 @@
             "send": true
         },
         {
+            "name": "TriggerLeft",
+            "param": "Trigger/L",
+            "send": true
+        },
+        {
+            "name": "TriggerRight",
+            "param": "Trigger/R",
+            "send": true
+        },
+        {
             "name": "LeftHandSkeleton",
             "param": "Skel/L",
             "send": true

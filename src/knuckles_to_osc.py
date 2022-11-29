@@ -72,6 +72,7 @@ def cls():
 
 CONFIG = json.load(open(resource_path('config.json')), object_hook=lambda x: SimpleNamespace(**x))
 OVRCONFIG = json.load(open(resource_path('ovrConfig.json')), object_hook=lambda x: SimpleNamespace(**x))
+CUSTOM_GESTURES = json.load(open(resource_path('custom_gestures.json')))
 IP = args.ip if args.ip is not None else CONFIG.ip
 PORT = args.port if args.port is not None else CONFIG.port
 HZ = args.hz if args.hz is not None else CONFIG.hz
@@ -133,6 +134,43 @@ for item in CONFIG.gesture_emu_outputs:
     ]
     gesture_emu_actions[item.hand] = GestureEmuAction(handles=handles, param=item.param)
 
+COMPARATORS = {
+    ">": (lambda x, y: x > y),
+    "<": (lambda x, y: x < y)
+}
+
+def handle_custom_gestures(curls, param):
+    hand = "Left" if "/L" in param else "Right" # TODO: pipeline my data better so i dont have to do this
+    code = 0
+
+    for gesture in [SimpleNamespace(**x) for x in CUSTOM_GESTURES["gestures"]]:
+        if hand not in gesture.hands:
+            break
+
+        match = True
+        for finger, conditions in gesture.conditions.items():
+            curl = curls[FINGERS[finger]]
+            conds = conditions
+            if isinstance(conds, str):
+                conds = CUSTOM_GESTURES["thresholds"][conds]
+            
+            for cond in conds:
+                match = match and (COMPARATORS[cond["comparator"]](curl, cond["than"]))
+
+                if not match:
+                    break
+            if not match:
+                break
+
+        if match:
+            code = int(gesture.code)
+
+    if args.debug:
+        print(f"{CUSTOM_GESTURES['parameters'][hand]}: {code}")
+
+    osc.send_message(f"{CONFIG.osc_prefix}{CUSTOM_GESTURES['parameters'][hand]}", code)
+
+
 @static_vars(last_gesture_emu_output={"left": 0, "right": 0})
 def handle_input():
     actionsets = (openvr.VRActiveActionSet_t * 2)()
@@ -159,6 +197,8 @@ def handle_input():
                     osc.send_message(f"{CONFIG.osc_prefix}{action.param}/Curl/{fname}", osc_compress_float(value.flFingerCurl[fidx]))
                 for fname, fidx in SPLAYFINGERS.items():
                     osc.send_message(f"{CONFIG.osc_prefix}{action.param}/Splay/{fname}", osc_compress_float(value.flFingerSplay[fidx]))
+
+                handle_custom_gestures(value.flFingerCurl, action.param)
 
                 if args.debug:
                     print(f"{name}: {format_skeletal_summary(value)}")

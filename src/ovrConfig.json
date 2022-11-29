@@ -12,6 +12,8 @@
         "TouchPosRight": ["/actions/main/in/TouchPosRight", "vector2"],
         "TouchTapRight": ["/actions/main/in/TouchTapRight", "bool"],
         "TouchPressRight":  ["/actions/main/in/TouchPressRight", "bool"],
+        "TriggerLeft":  ["/actions/main/in/TriggerLeft", "vector1"],
+        "TriggerRight":  ["/actions/main/in/TriggerRight", "vector1"],
         "LeftHandSkeleton": ["/actions/main/in/LeftHandSkeleton", "skeleton"],
         "RightHandSkeleton": ["/actions/main/in/RightHandSkeleton", "skeleton"]
     },

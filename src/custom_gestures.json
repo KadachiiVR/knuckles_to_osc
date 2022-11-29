@@ -1,0 +1,66 @@
+{
+    "parameters" :
+    {
+        "Left": "CGestureLeft",
+        "Right": "CGestureRight"
+    },
+
+    "thresholds":
+    {
+        "extended":
+        [
+            {
+                "comparator": "<",
+                "than": 0.3
+            }
+        ],
+        "curled":
+        [
+            {
+                "comparator": ">",
+                "than": 0.7
+            }
+        ]
+    },
+    "gestures":
+    [
+        {
+            "name": "Bird",
+            "hands": [ "Left", "Right" ],
+            "code": 1,
+            "conditions":
+            {
+                "Thumb":
+                [
+                    {
+                        "comparator": ">",
+                        "than": 0.7
+                    }
+                ],
+                "Index": "curled",
+                "Middle": "extended",
+                "Ring": "curled",
+                "Pinky": "curled"
+            }
+        },
+        {
+            "name": "Shocker",
+            "hands": [ "Left", "Right" ],
+            "code": 2,
+            "conditions":
+            {
+                "Thumb":
+                [
+                    {
+                        "comparator": ">",
+                        "than": 0.7
+                    }
+                ],
+                "Index": "extended",
+                "Middle": "extended",
+                "Ring": "curled",
+                "Pinky": "extended"
+            }
+        }
+    ]
+}
