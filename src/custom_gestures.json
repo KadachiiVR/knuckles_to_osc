@@ -61,6 +61,25 @@
                 "Ring": "curled",
                 "Pinky": "extended"
             }
+        },
+        {
+            "name": "OkHand",
+            "hands": [ "Left", "Right" ],
+            "code": 3,
+            "conditions":
+            {
+                "Thumb":
+                [
+                    {
+                        "comparator": ">",
+                        "than": 0.7
+                    }
+                ],
+                "Index": "curled",
+                "Middle": "extended",
+                "Ring": "extended",
+                "Pinky": "extended"
+            }
         }
     ]
 }

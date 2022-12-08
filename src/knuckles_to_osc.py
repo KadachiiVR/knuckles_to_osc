@@ -208,7 +208,8 @@ def handle_input():
         else:
             value = openvr.VRInput().getAnalogActionData(action.handle, openvr.k_ulInvalidInputValueHandle)
             if action.dtype == DTYPES.VECTOR1:
-                osc.send_message(f"{CONFIG.osc_prefix}{action.param}", float(value.x) / 2 + .5)
+                osc.send_message(f"{CONFIG.osc_prefix}{action.param}", osc_compress_float(value.x))
+                # todo: figure out extensible way to designate which inputs need remapping
 
                 if args.debug:
                     print(f"{name}: x = {value.x: #.4f}")
