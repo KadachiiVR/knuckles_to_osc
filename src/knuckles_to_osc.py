@@ -6,6 +6,7 @@ import json
 import collections
 import time
 import traceback
+import atexit
 from types import SimpleNamespace
 
 import openvr
@@ -173,6 +174,8 @@ def handle_custom_gestures(curls, param):
 
 @static_vars(last_gesture_emu_output={"left": 0, "right": 0})
 def handle_input():
+    osc.send_message(f"{CONFIG.osc_prefix}{CONFIG.announce_parameter}", True)
+
     actionsets = (openvr.VRActiveActionSet_t * 2)()
     actionsets[0].ulActionSet = action_set_handle
     actionsets[1].ulActionSet = gesture_emu_action_set_handle
@@ -240,6 +243,17 @@ def handle_input():
     
     if args.debug:
         sys.stdout.flush()
+
+
+def clear_announce_parameter(osc_client):
+    print("Exiting, clearing announce parameter")
+    osc_client.send_message(f"{CONFIG.osc_prefix}{CONFIG.announce_parameter}", False)
+    time.sleep(0.2)
+    osc_client.send_message(f"{CONFIG.osc_prefix}{CONFIG.announce_parameter}", False)
+    time.sleep(0.2)
+    osc_client.send_message(f"{CONFIG.osc_prefix}{CONFIG.announce_parameter}", False)
+
+atexit.register(clear_announce_parameter, osc)
 
 
 cls()

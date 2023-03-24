@@ -3,6 +3,7 @@
     "port": 9000,
     "osc_prefix": "/avatar/parameters/",
     "hz": 10.0,
+    "announce_parameter": "K2OSC",
 
     "outputs":
     [
